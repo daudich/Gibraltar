@@ -21,10 +21,10 @@ dev and testing, with some documentation and packaging taking place at the end o
 ## How to run?
 
 * To build and run:
-  'ant'
+  `ant`
 
 * To run the client:
-  java -jar nelson_client.jar
+  `java -jar nelson_client.jar`
 
 * Enjoy!
 
