@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<project name="Naval Combat System" default="run" basedir=".">
+	<description>A back-end server for a Naval Combat Simulation System</description>
+    
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+    
+    <property name="author" location="Robert Codd-Downey, Dhiren Audich"/>
+    <property name="group" location="Gibraltar"/>
+    
+	<target name="init">
+		<mkdir dir="${build}"/>
+	</target>
+    
+	<target name="build" depends="init" description="build the source">
+		<javac srcdir="${src}" destdir="${build}" includes="**/*.java" includeantruntime="false" debug="on" debuglevel="lines,vars,source"/>
+	</target>
+    
+    <target name="package" depends="build" description="packages classes in jar file">
+        <jar jarfile="${group}.jar" basedir="${build}">
+            <manifest>
+                <attribute name="Built-By" value="${author}"/>
+                <attribute name="Main-Class" value="ncs.Controller"/>
+            </manifest>
+        </jar>
+    </target>
+    
+    <target name="run" depends="package" description="run the jar file">
+        <java jar="${group}.jar" fork="true">
+            <jvmarg line="-Xms1024m -Xmx1024m"/>
+        </java>
+    </target>
+    
+</project>
